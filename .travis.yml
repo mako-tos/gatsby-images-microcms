@@ -8,7 +8,4 @@ notifications:
 sudo: false
 cache: yarn
 script:
-  - yarn test
-after_script:
-  - yarn add coveralls
-  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  - yarn test:coverage && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls

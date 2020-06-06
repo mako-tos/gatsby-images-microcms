@@ -81,4 +81,15 @@ describe('onPreBootstrap', () => {
     );
     expect(reporter.panic.mock.calls.length).toBe(1);
   });
+
+  test('pass quality to object', async () => {
+    const pluginOptions = { mediaType: 'a', field: 'b', quality: {} };
+    await onPreBootstrap(
+      {
+        reporter,
+      },
+      pluginOptions
+    );
+    expect(reporter.panic.mock.calls.length).toBe(1);
+  });
 });
