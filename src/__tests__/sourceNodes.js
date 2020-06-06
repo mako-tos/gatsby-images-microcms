@@ -18,6 +18,7 @@ const actions = {
 const createNodeId = jest.fn().mockReturnValue('nodeId');
 const createContentDigest = jest.fn().mockReturnValue('digest');
 const getNode = jest.fn().mockReturnValue({});
+const reporter = { warn: jest.fn() };
 
 beforeEach(() => {
   actions.createNode.mockClear();
@@ -25,9 +26,37 @@ beforeEach(() => {
   createNodeId.mockClear();
   createContentDigest.mockClear();
   getNode.mockClear();
+  reporter.warn.mockClear();
 });
 
 describe('sourceNodes', () => {
+  test('target nodes missing', async () => {
+    const getNodesByType = jest.fn().mockReturnValue([]);
+    const pluginOptions = {
+      type: 'blog', // string
+      field: 'headImage', // string
+    };
+
+    await sourceNodes(
+      {
+        actions,
+        createNodeId,
+        createContentDigest,
+        getNode,
+        getNodesByType,
+        reporter,
+      },
+      pluginOptions
+    );
+    expect(reporter.warn.mock.calls.length).toBe(1);
+    expect(getNodesByType.mock.calls.length).toBe(1);
+    expect(actions.createNode.mock.calls.length).toBe(0);
+    expect(createNodeId.mock.calls.length).toBe(0);
+    expect(createContentDigest.mock.calls.length).toBe(0);
+    expect(getNode.mock.calls.length).toBe(0);
+    expect(actions.createParentChildLink.mock.calls.length).toBe(0);
+  });
+
   test('target nodes dont have url', async () => {
     const getNodesByType = jest.fn().mockReturnValue([{}]);
     const pluginOptions = {
@@ -42,9 +71,11 @@ describe('sourceNodes', () => {
         createContentDigest,
         getNode,
         getNodesByType,
+        reporter,
       },
       pluginOptions
     );
+    expect(reporter.warn.mock.calls.length).toBe(0);
     expect(getNodesByType.mock.calls.length).toBe(1);
     expect(actions.createNode.mock.calls.length).toBe(0);
     expect(createNodeId.mock.calls.length).toBe(0);
@@ -70,9 +101,11 @@ describe('sourceNodes', () => {
         createContentDigest,
         getNode,
         getNodesByType,
+        reporter,
       },
       pluginOptions
     );
+    expect(reporter.warn.mock.calls.length).toBe(0);
     expect(getNodesByType.mock.calls.length).toBe(1);
     expect(actions.createNode.mock.calls.length).toBe(1);
     expect(createNodeId.mock.calls.length).toBe(1);
@@ -100,9 +133,11 @@ describe('sourceNodes', () => {
         createContentDigest,
         getNode,
         getNodesByType,
+        reporter,
       },
       pluginOptions
     );
+    expect(reporter.warn.mock.calls.length).toBe(0);
     expect(getNodesByType.mock.calls.length).toBe(1);
     expect(actions.createNode.mock.calls.length).toBe(2);
     expect(createNodeId.mock.calls.length).toBe(2);
@@ -130,9 +165,11 @@ describe('sourceNodes', () => {
         createContentDigest,
         getNode,
         getNodesByType,
+        reporter,
       },
       pluginOptions
     );
+    expect(reporter.warn.mock.calls.length).toBe(0);
     expect(getNodesByType.mock.calls.length).toBe(1);
     expect(actions.createNode.mock.calls.length).toBe(1);
     expect(createNodeId.mock.calls.length).toBe(1);
