@@ -1,0 +1,13 @@
+# npm
+node_modules
+
+# gatsby
+.cache
+public
+
+# example
+example/.env
+example/package-lock.json
+
+# coverage
+coverage
