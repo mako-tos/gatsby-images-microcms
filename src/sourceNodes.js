@@ -67,7 +67,7 @@ async function sourceNodes(
           children: [],
           internal: {
             type: camelCase(
-              [pluginOptions.mediaType, pluginOptions.field, 'image'],
+              [pluginOptions.mediaType, pluginOptions.field],
               { pascalCase: true }
             ),
             contentDigest: createContentDigest(newNode),

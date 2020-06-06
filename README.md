@@ -56,13 +56,16 @@ exports.createPages = async ({ graphql, actions }) => {
           edges {
             node {
               id
-              /** NEED FIX */
-              childFile {
-                childImageSharp {
-                  fluid(quality: 80) {
-                    ...GatsbyImageSharpFluid_withWebp
-                  }
-                }
+              childMicrocmsBlogHero {
+                aspectRatio
+                presentationHeight
+                presentationWidth
+                sizes
+                src
+                srcSet
+                srcSetWebp
+                srcWebp
+                type
               }
             }
           }
@@ -82,7 +85,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve('./src/templates/blog-post.js'),
       context: {
         slug: post.id,
-        heroFluid: post.childFile.childImageSharp.fluid
+        heroFluid: post.childMicrocmsBlogHero
       },
     });
   });
