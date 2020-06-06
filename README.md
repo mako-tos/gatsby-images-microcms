@@ -6,12 +6,12 @@ images plugin for Gatsby from [microCMS](https://microcms.io/).
 
 ```sh
 # with yarn
-$ yarn add gatsby-images-microcms
+$ yarn add @mako-tos/gatsby-images-microcms
 ```
 
 ```sh
 # with npm
-$ npm install gatsby-images-microcms
+$ npm install @mako-tos/gatsby-images-microcms
 ```
 
 ## How to use
