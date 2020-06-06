@@ -1,4 +1,9 @@
-# gatsby-remark-images-microcms
+[![Coverage Status](https://coveralls.io/repos/github/mako-tos/gatsby-images-microcms/badge.svg?branch=master)](https://coveralls.io/github/mako-tos/gatsby-images-microcms?branch=master)
+![NPM](https://img.shields.io/npm/l/@mako-tos/gatsby-images-microcms)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/mako-tos/gatsby-images-microcms)
+![npm (scoped)](https://img.shields.io/npm/v/@mako-tos/gatsby-images-microcms)
+
+# @mako-tos/gatsby-images-microcms
 
 images plugin for Gatsby from [microCMS](https://microcms.io/).
 
