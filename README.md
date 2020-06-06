@@ -4,8 +4,6 @@ images plugin for Gatsby from [microCMS](https://microcms.io/).
 
 ## Install
 
-this program is under testing so dont do yarn add or npm install..
-
 ```sh
 # with yarn
 $ yarn add gatsby-images-microcms
@@ -38,7 +36,7 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-images-microcms',
+      resolve: '@mako-tos/gatsby-images-microcms',
       options: {
         mediaType: 'microcmsBlog', // string
         field: 'hero', // string
@@ -64,6 +62,9 @@ exports.createPages = async ({ graphql, actions }) => {
             node {
               id
               createdAt
+              hero {
+                url
+              }
               childMicrocmsBlogHero {
                 aspectRatio
                 presentationHeight
@@ -97,5 +98,42 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
   });
+};
+```
+
+### Options
+
+```js
+module.exports = {
+  plugins: [
+    {
+      resolve: '@mako-tos/gatsby-images-microcms',
+      options: {
+        /**
+         * Target GraphQL Table Name (Required)
+         *
+         * Type: string.
+         * default: undefined,
+         **/
+        mediaType: 'MicrocmsBlog',
+
+        /**
+         * Table's html field Name (Required)
+         *
+         * Type: string.
+         * default: undefined,
+         **/
+        field: 'body',
+
+        /**
+         * If you want to higer or lower quality of image (Optional)
+         *
+         * Type: number.
+         * default: 80.
+         **/
+        quality: 95,
+      },
+    },
+  ],
 };
 ```
