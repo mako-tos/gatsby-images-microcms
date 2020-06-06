@@ -1,18 +1,13 @@
 {
   "name": "@mako-tos/gatsby-images-microcms",
+  "private": false,
   "version": "0.0.4",
   "description": "from img url, create fluid object plugin for Gatsby and microCMS.",
+  "author": "mako-tos",
   "main": "gatsby-node.js",
-  "license": "MIT",
-  "contributors": [
-    "mako-tos"
-  ],
-  "scripts": {
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mako-tos/gatsby-images-microcms.git"
+  "dependencies": {
+    "camelcase": "^5.3.1",
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
     "eslint": "^6.5.1",
@@ -23,18 +18,24 @@
     "jest": "^26.0.1",
     "prettier": "^1.18.2"
   },
-  "dependencies": {
-    "camelcase": "^5.3.1",
-    "node-fetch": "^2.6.0"
-  },
-  "files": [
-    "gatsby-node.js"
-  ],
   "keywords": [
     "gatsby",
     "gatsby-plugin",
     "image",
     "microCMS",
     "mako-tos"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mako-tos/gatsby-images-microcms.git"
+  },
+  "files": [
+    "gatsby-node.js",
+    "src/onPreBootstrap.js",
+    "src/sourceNodes.js"
   ]
 }
