@@ -4,9 +4,16 @@ images plugin for Gatsby from [microCMS](https://microcms.io/).
 
 ## Install
 
+this program is under testing so dont do yarn add or npm install..
+
 ```sh
-# yarn になる予定
+# with yarn
 $ yarn add gatsby-images-microcms
+```
+
+```sh
+# with npm
+$ npm install gatsby-images-microcms
 ```
 
 ## How to use
@@ -56,6 +63,7 @@ exports.createPages = async ({ graphql, actions }) => {
           edges {
             node {
               id
+              createdAt
               childMicrocmsBlogHero {
                 aspectRatio
                 presentationHeight

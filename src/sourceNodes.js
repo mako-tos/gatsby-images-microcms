@@ -61,7 +61,7 @@ async function sourceNodes(
         const microcmsImageNode = {
           ...newNode,
           id: createNodeId(
-            `${pluginOptions.mediaType}-${pluginOptions.field}-images-${node.id}`
+            `${pluginOptions.mediaType}-${pluginOptions.field}-${node.id}`
           ),
           parent: node.id,
           children: [],
