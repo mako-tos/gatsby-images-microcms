@@ -1,6 +1,6 @@
 {
   "name": "@mako-tos/gatsby-images-microcms",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "from img url, create fluid object plugin for Gatsby and microCMS.",
   "main": "gatsby-node.js",
   "license": "MIT",
