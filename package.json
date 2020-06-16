@@ -37,7 +37,6 @@
   },
   "files": [
     "gatsby-node.js",
-    "src/onPreBootstrap.js",
-    "src/sourceNodes.js"
+    "src/"
   ]
 }

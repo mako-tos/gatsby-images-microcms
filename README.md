@@ -23,7 +23,7 @@ $ npm install @mako-tos/gatsby-images-microcms
 
 ### gatsby-config.js
 
-#### This npm is installed with gatsby-source-microcms
+#### This npm module is installed with gatsby-source-microcms
 
 You need setting options in `gatsby-config.js`.
 
@@ -59,6 +59,12 @@ You can query like the following. Gatsby create Pages based on microCMS contents
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
+  /**
+   * you can pass following parameters
+   * fixedHeight: set if image height fix
+   * quality: set image quality
+   *          default value is 50
+   */
   const result = await graphql(
     `
       {
@@ -70,16 +76,14 @@ exports.createPages = async ({ graphql, actions }) => {
               hero {
                 url
               }
-              childMicrocmsBlogHero {
+              fluid(fixedHeight: 400, quality: 70) {
                 aspectRatio
-                presentationHeight
-                presentationWidth
-                sizes
                 src
                 srcSet
-                srcSetWebp
+                srcSetType
                 srcWebp
-                type
+                srcSetWebp
+                sizes
               }
             }
           }
@@ -99,7 +103,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve('./src/templates/blog-post.js'),
       context: {
         slug: post.id,
-        heroFluid: post.childMicrocmsBlogHero
+        heroFluid: post.fluid
       },
     });
   });
@@ -129,14 +133,6 @@ module.exports = {
          * default: undefined,
          **/
         field: 'body',
-
-        /**
-         * If you want to higer or lower quality of image (Optional)
-         *
-         * Type: number.
-         * default: 80.
-         **/
-        quality: 95,
       },
     },
   ],
