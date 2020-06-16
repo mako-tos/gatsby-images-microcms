@@ -1,7 +1,7 @@
-const { graphql } = require('gatsby');
+import { graphql } from 'gatsby';
 
-exports.FluidWithWebp = graphql`
-fragment FluidWithWebp on Fluid {
+export const FluidWithWebp = graphql`
+  fragment FluidWithWebp on Fluid {
     aspectRatio
     src
     srcSet
@@ -10,4 +10,4 @@ fragment FluidWithWebp on Fluid {
     srcSetWebp
     sizes
   }
-`
+`;

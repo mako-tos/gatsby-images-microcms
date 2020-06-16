@@ -11,6 +11,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
+    sourceType: "module",
   },
   env: { node: true, es6: true, jest: true },
 };
