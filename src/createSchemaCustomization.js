@@ -98,7 +98,7 @@ exports.createSchemaCustomization = ({ actions, reporter }, pluginOptions) => {
     },
   });
   actions.createTypes(`
-    type MicrocmsBlog implements Node {
+    type ${pluginOptions.mediaType} implements Node {
       fluid: Fluid @fluid
     }
     type Fluid {
