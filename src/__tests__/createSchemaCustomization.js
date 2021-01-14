@@ -17,7 +17,7 @@ beforeEach(() => {
 
 describe('createSchemaCustomization', () => {
   test('success anyway', async () => {
-    const pluginOptions = {};
+    const pluginOptions = [{}];
 
     await createSchemaCustomization(
       {
@@ -122,9 +122,9 @@ describe('resolver', () => {
         type: 'a'
       }
     }
-    const pluginOptions = {
+    const pluginOptions = [{
       mediaType: 'b'
-    }
+    }]
     await resolver(
       source,
       {},
@@ -141,10 +141,10 @@ describe('resolver', () => {
       },
       b: false
     }
-    const pluginOptions = {
+    const pluginOptions = [{
       mediaType: 'a',
       field: 'b'
-    }
+    }]
     await resolver(
       source,
       {},
@@ -161,10 +161,10 @@ describe('resolver', () => {
       },
       b: {}
     }
-    const pluginOptions = {
+    const pluginOptions = [{
       mediaType: 'a',
       field: 'b'
-    }
+    }]
     await resolver(
       source,
       {},
@@ -192,10 +192,10 @@ describe('resolver', () => {
         url: 'http://some-server.com/some-image.png'
       }
     }
-    const pluginOptions = {
+    const pluginOptions = [{
       mediaType: 'a',
       field: 'b'
-    }
+    }]
     await resolver(
       source,
       {},
@@ -225,10 +225,10 @@ describe('resolver', () => {
       }
     }
     const args = { quality: 70, fixedHeight: 10 }
-    const pluginOptions = {
+    const pluginOptions = [{
       mediaType: 'a',
       field: 'b'
-    }
+    }]
     const result = await resolver(
       source,
       args,

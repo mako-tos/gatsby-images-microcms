@@ -42,10 +42,10 @@ module.exports = {
     },
     {
       resolve: '@mako-tos/gatsby-images-microcms',
-      options: {
+      options: [{
         mediaType: 'microcmsBlog', // string
         field: 'hero', // string
-      },
+      }],
     },
   ],
 };

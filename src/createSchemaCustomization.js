@@ -34,19 +34,23 @@ exports.createSrcset = createSrcset;
  * @param {object} args
  * @param {number} args.quality
  * @param {number} args.fixedHeight
- * @param {object} pluginOptions
+ * @param {Array<object>} pluginOptions
  * @param {string} pluginOptions.mediaType
  * @param {string} pluginOptions.field
  */
 const resolver = async (source, args, pluginOptions, reporter) => {
-  if (!source.internal || source.internal.type !== pluginOptions.mediaType) {
+  if (!pluginOptions || !pluginOptions.find) {
     return;
   }
-  if (!source[pluginOptions.field] || !source[pluginOptions.field].url) {
+  const option = pluginOptions.find(option => source.internal.type === option.mediaType)
+  if (!option) {
+    return;
+  }
+  if (!source[option.field] || !source[option.field].url) {
     return;
   }
 
-  const url = source[pluginOptions.field].url;
+  const url = source[option.field].url;
   let json;
   try {
     json = await fetch(url + '?fm=json').then(res => res.json());
@@ -85,15 +89,16 @@ exports.createSchemaCustomization = ({ actions, reporter }, pluginOptions) => {
     // The extension `args` (above) are passed to `extend` as
     // the first argument (`options` below)
     extend() {
+      const resolve = async (source, args) => {
+        const result = await resolver(source, args, pluginOptions, reporter);
+        return result;
+      }
       return {
         args: {
           quality: 'Int',
           fixedHeight: 'Int',
         },
-        async resolve(source, args) {
-          const result = await resolver(source, args, pluginOptions, reporter);
-          return result;
-        },
+        resolve,
       };
     },
   });

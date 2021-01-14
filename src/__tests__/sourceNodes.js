@@ -32,10 +32,10 @@ beforeEach(() => {
 describe('sourceNodes', () => {
   test('target nodes missing', async () => {
     const getNodesByType = jest.fn().mockReturnValue([]);
-    const pluginOptions = {
+    const pluginOptions = [{
       type: 'blog', // string
       field: 'headImage', // string
-    };
+    }];
 
     await sourceNodes(
       {
@@ -59,10 +59,10 @@ describe('sourceNodes', () => {
 
   test('target nodes dont have url', async () => {
     const getNodesByType = jest.fn().mockReturnValue([{}]);
-    const pluginOptions = {
+    const pluginOptions = [{
       type: 'blog', // string
       field: 'headImage', // string
-    };
+    }];
 
     await sourceNodes(
       {
@@ -88,11 +88,11 @@ describe('sourceNodes', () => {
     const getNodesByType = jest
       .fn()
       .mockReturnValue([{ headImage: { url: 'https://some-server.com/img' } }]);
-    const pluginOptions = {
+    const pluginOptions = [{
       mediaType: 'blog', // string
       field: 'headImage', // string
       quality: 10,
-    };
+    }];
 
     await sourceNodes(
       {
@@ -121,10 +121,10 @@ describe('sourceNodes', () => {
         { headImage: { url: 'https://some-server.com/some-img.png' } },
         { headImage: { url: 'https://other-server.com/other-img.jpg' } },
       ]);
-    const pluginOptions = {
+    const pluginOptions = [{
       mediaType: 'blog', // string
       field: 'headImage', // string
-    };
+    }];
 
     await sourceNodes(
       {
@@ -153,10 +153,10 @@ describe('sourceNodes', () => {
         {},
         { headImage: { url: 'https://some-server.com/img' } },
       ]);
-    const pluginOptions = {
+    const pluginOptions = [{
       mediaType: 'blog', // string
       field: 'headImage', // string
-    };
+    }];
 
     await sourceNodes(
       {

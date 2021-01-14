@@ -10,11 +10,11 @@ beforeEach(() => {
 
 describe('onPreBootstrap', () => {
   test('pass all', async () => {
-    const pluginOptions = {
+    const pluginOptions = [{
       mediaType: 'microcmsBlog', // string
       field: 'headImage', // string
       quality: 50 // int
-    };
+    }];
     await onPreBootstrap(
       {
         reporter,
@@ -25,10 +25,10 @@ describe('onPreBootstrap', () => {
   });
 
   test('pass mediaType, field', async () => {
-    const pluginOptions = {
+    const pluginOptions = [{
       mediaType: 'microcmsBlog', // string
       field: 'headImage', // string
-    };
+    }];
     await onPreBootstrap(
       {
         reporter,
@@ -61,7 +61,7 @@ describe('onPreBootstrap', () => {
   });
 
   test('pass field only', async () => {
-    const pluginOptions = { field: 'a' };
+    const pluginOptions = [{ field: 'a' }];
     await onPreBootstrap(
       {
         reporter,
@@ -72,7 +72,7 @@ describe('onPreBootstrap', () => {
   });
 
   test('pass mediaType only', async () => {
-    const pluginOptions = { mediaType: 'a' };
+    const pluginOptions = [{ mediaType: 'a' }];
     await onPreBootstrap(
       {
         reporter,
@@ -83,7 +83,7 @@ describe('onPreBootstrap', () => {
   });
 
   test('pass quality to object', async () => {
-    const pluginOptions = { mediaType: 'a', field: 'b', quality: {} };
+    const pluginOptions = [{ mediaType: 'a', field: 'b', quality: {} }];
     await onPreBootstrap(
       {
         reporter,
