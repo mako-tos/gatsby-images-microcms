@@ -34,8 +34,14 @@ async function sourceNodes(
   pluginOptions
 ) {
   const { createNode, createParentChildLink } = actions;
+  const options = []
+  for (const i in pluginOptions) {
+    if (i !== 'plugins') {
+      options.push(pluginOptions[i])
+    }
+  }
 
-  const outerPromises = pluginOptions.map(async option => {
+  const outerPromises = options.map(async option => {
     const nodeList = getNodesByType(option.mediaType);
 
     if (nodeList.length === 0) {

@@ -1,10 +1,13 @@
 const validateOptions = ({ reporter }, options) => {
-  if (!options || !options.length) {
+  if (!options) {
     reporter.panic('need options');
     return;
   }
 
   for (const i in options) {
+    if (i === 'plugins') {
+      continue;
+    }
     const option = options[i]
     if (!option.mediaType || typeof option.mediaType !== 'string') {
       reporter.panic('need mediaType and must be string');
